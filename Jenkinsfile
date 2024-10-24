@@ -1,9 +1,9 @@
 pipeline {
   agent any
 
-  environment {
+  //environment {
     //FLY_AUTH_TOKEN = credentials('FLY_TOKEN')
-  }
+  //}
 
 
   tools {
