@@ -28,7 +28,6 @@ pipeline {
           '''
         }
       }
-    }
     
     stage ('Pintar mi credencial'){
       steps{
