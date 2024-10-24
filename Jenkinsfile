@@ -53,8 +53,12 @@ pipeline {
     stage ('Deploy to Fly.io') {
         steps {
           echo 'Deploying to fly.io'
-          sh 'flyctl auth token $FLY_API_TOKEN'
-          sh '$PATH flyctl deploy --app practicafinaljenkins --remote-only'          
+          sh '''
+          FLYCTL_INSTALL="/var/jenkins_home/.fly"
+          PATH="$FLYCTL_INSTALL/bin:$PATH"
+          flyctl auth token $FLY_API_TOKEN'
+          $PATH flyctl deploy --app practicafinaljenkins --remote-only
+          '''         
         }
       }
   }
