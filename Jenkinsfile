@@ -1,9 +1,6 @@
 pipeline {
   agent any
 
-  //environment {
-    //FLY_AUTH_TOKEN = credentials('FLY_TOKEN')
-  //}
 
 
   tools {
@@ -23,7 +20,7 @@ pipeline {
           curl -L https://fly.io/install.sh | sh
           FLYCTL_INSTALL="/var/jenkins_home/.fly"
           PATH="$FLYCTL_INSTALL/bin:$PATH"
-          echo "export PATH=\$PATH" >> $HOME/.bashrc
+          #echo "export PATH=\$PATH" >> $HOME/.bashrc
           flyctl auth token ${FLY_API_TOKEN}
           '''
         }
@@ -50,7 +47,7 @@ pipeline {
           sh '''
           FLYCTL_INSTALL="/var/jenkins_home/.fly"
           PATH="$FLYCTL_INSTALL/bin:$PATH"
-          flyctl auth token ${FLY_API_TOKEN}
+          flyctl auth token
           flyctl deploy --app practicafinaljenkins --remote-only
           '''         
         }
