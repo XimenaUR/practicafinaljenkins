@@ -69,12 +69,7 @@ pipeline {
         }
       }
 
-      stage ('Deploy to Fly.io') {
-        steps {
-          echo 'Deploying to fly.io'
-          sh 'flyctl auth token $FLY_API_TOKEN'
-          sh '/usr/bin/flyctl deploy --app practicafinaljenkins --remote-only'          
-        }
+      
   
       }
   }
