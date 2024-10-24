@@ -18,13 +18,13 @@ pipeline {
     stage ('Install fly.io') {
       steps {
         echo 'Installing Fly.io'
-        withCredentials([string(credentialsId: 'FLY_TOKEN', variable: 'FLY_AUTH_TOKEN')]) {
+        withCredentials([string(credentialsId: 'FLY_TOKEN', variable: 'FLY_API_TOKEN')]) {
         sh '''
           curl -L https://fly.io/install.sh | sh
           FLYCTL_INSTALL="/var/jenkins_home/.fly"
           PATH="$FLYCTL_INSTALL/bin:$PATH"
           echo "export PATH=\$PATH" >> $HOME/.bashrc
-          flyctl auth login ${FLY_AUTH_TOKEN}
+          flyctl auth token ${FLY_API_TOKEN}
           '''
         }
       }
@@ -57,7 +57,7 @@ pipeline {
           FLYCTL_INSTALL="/var/jenkins_home/.fly"
           PATH="$FLYCTL_INSTALL/bin:$PATH"
           flyctl auth token ${FLY_API_TOKEN}
-          $PATH flyctl deploy --app practicafinaljenkins --remote-only
+          flyctl deploy --app practicafinaljenkins --remote-only
           '''         
         }
       }
