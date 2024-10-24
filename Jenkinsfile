@@ -30,12 +30,6 @@ pipeline {
       }
     }
 
-    stage ('Pintar mi credencial'){
-      steps{
-        echo 'Esta es mi credencial: $FLY_JENKINS'
-        }
-    }
-
     stage ('Install dependencies') {
       steps {
         echo 'Installing'
