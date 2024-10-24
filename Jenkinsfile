@@ -21,7 +21,7 @@ pipeline {
         withCredentials([string(credentialsId: 'FLY_API_TOKEN', variable: 'FLY_API_TOKEN')]) {
         sh '''
           curl -L https://fly.io/install.sh | sh
-          export FLYCTL_INSTALL="/var/jenkins_home/.flytl"
+          export FLYCTL_INSTALL="/var/jenkins_home/.flyctl"
           export PATH="$FLYCTL_INSTALL/bin:$PATH"
           flyctl auth token $FLY_API_TOKEN
           '''
