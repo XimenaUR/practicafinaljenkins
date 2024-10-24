@@ -24,7 +24,7 @@ pipeline {
           FLYCTL_INSTALL="/var/jenkins_home/.fly"
           PATH="$FLYCTL_INSTALL/bin:$PATH"
           echo "export PATH=\$PATH" >> $HOME/.bashrc
-          flyctl auth token ${FLY_TOKEN}
+          flyctl auth token ${FLY_API_TOKEN}
           '''
         }
     }
