@@ -1,6 +1,10 @@
 pipeline {
   agent any
 
+  environment {
+    FLY_TOKEN = ('FLY_API_TOKEN')
+  }
+
 
   tools {
     nodejs "nodejs-18"
