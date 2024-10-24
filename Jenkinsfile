@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    FLY_JENKINS = credentials('FLY_TOKEN')
+    FLY_AUTH_TOKEN = credentials('FLY_TOKEN')
   }
 
 
@@ -18,13 +18,13 @@ pipeline {
     stage ('Install fly.io') {
       steps {
         echo 'Installing Fly.io'
-        withCredentials([string(credentialsId: 'FLY_TOKEN', variable: 'FLY_JENKINS')]) {
+        withCredentials([string(credentialsId: 'FLY_TOKEN', variable: 'FLY_AUTH_TOKEN')]) {
         sh '''
           curl -L https://fly.io/install.sh | sh
           FLYCTL_INSTALL="/var/jenkins_home/.fly"
           PATH="$FLYCTL_INSTALL/bin:$PATH"
           echo "export PATH=\$PATH" >> $HOME/.bashrc
-          flyctl auth token ${FLY_JENKINS}
+          flyctl auth token ${FLY_AUTH_TOKEN}
           '''
         }
       }
