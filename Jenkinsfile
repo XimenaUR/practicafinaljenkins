@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    FLY_TOKEN = ('FLY_API_TOKEN')
+    FLY_TOKEN = credentials('FLY_API_TOKEN')
   }
 
 
