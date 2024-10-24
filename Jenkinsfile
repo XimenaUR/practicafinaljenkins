@@ -56,7 +56,7 @@ pipeline {
           sh '''
           FLYCTL_INSTALL="/var/jenkins_home/.fly"
           PATH="$FLYCTL_INSTALL/bin:$PATH"
-          flyctl auth token $FLY_API_TOKEN'
+          flyctl auth token ${FLY_API_TOKEN}
           $PATH flyctl deploy --app practicafinaljenkins --remote-only
           '''         
         }
