@@ -18,21 +18,21 @@ pipeline {
     stage ('Install fly.io') {
       steps {
         echo 'Installing Fly.io'
-        withCredentials([string(credentialsId: 'FLY_TOKEN', variable: 'FLY_TOKEN')]) {
+        withCredentials([string(credentialsId: 'FLY_TOKEN', variable: 'FLY_JENKINS')]) {
         sh '''
           curl -L https://fly.io/install.sh | sh
           FLYCTL_INSTALL="/var/jenkins_home/.fly"
           PATH="$FLYCTL_INSTALL/bin:$PATH"
           echo "export PATH=\$PATH" >> $HOME/.bashrc
-          flyctl auth token ${FLY_TOKEN}
+          flyctl auth token ${FLY_JENKINS}
           '''
         }
       }
     }
-    
+
     stage ('Pintar mi credencial'){
       steps{
-        echo 'Esta es mi credencial: $FLY_API_TOKEN'
+        echo 'Esta es mi credencial: $FLY_JENKINS'
         }
     }
 
@@ -42,12 +42,14 @@ pipeline {
         sh 'npm install'
       } 
     }
+
     stage ('Run test') {
       steps {
         echo 'Running test'
         sh 'npm run test'
       }      
     }
+
     stage ('Deploy to Fly.io') {
         steps {
           echo 'Deploying to fly.io'
