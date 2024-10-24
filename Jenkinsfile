@@ -27,6 +27,7 @@ pipeline {
           flyctl auth token ${FLY_TOKEN}
           '''
         }
+      }
     }
     
     stage ('Pintar mi credencial'){
