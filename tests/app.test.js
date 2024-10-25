@@ -2,10 +2,10 @@ const request = require('supertest');
 const app = require('../src/app');
 
 describe('API Tests', () => {
-    it('should return Welcome to Jenkins in Fly.io on GET /', async () => {
+    it('should return Welcome to Jenkins in Fly.io test on GET /', async () => {
         const response = await request(app).get('/');
         expect(response.status).toBe(200);
-        expect(response.body.message).toBe('Welcome to Jenkins in Fly.io');
+        expect(response.body.message).toBe('Welcome to Jenkins in Fly.io test');
     });
 
     it('should echo back the posted data on POST /echo', async () => {

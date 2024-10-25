@@ -5,7 +5,7 @@ app.use(express.json());
 
 // Ruta básica
 app.get('/', (req, res) => {
-    res.status(200).json({ message: 'Welcome to Jenkins in Fly.io' });
+    res.status(200).json({ message: 'Welcome to Jenkins in Fly.io test' });
 });
 
 // Ruta de ejemplo para pruebas
