@@ -9,4 +9,4 @@ Descripción del ejercicio:
 2. Construcción de la aplicación: Si los tests son exitosos, se contruirá la aplicación en un contenedor Docker.
 3. Despliegue en Fly.io tras la construcción, la aplicación debe ser desplegada automáticamente en Fly.io
 
-NOTA: Instalé primero Fly porque en una clase dijiste que si no instalaba correctamente para que gastar recursos haciendo los tests... 
+
